@@ -3,7 +3,7 @@
 Library    SeleniumLibrary
 *** Test Cases ***
 User Can Complete a Purchase
-    Open Browser    https://IsAugust.github.io/SwagLabsCI/swag_labs.html    Chrome
+    Open Browser    https://IsAugust.github.io/SwagLabsCI/swag_labs.html    Chrome    options=add_argument(--headless)
     Maximize Browser Window
     Wait Until Element Is Visible    id=username
     Sleep    2s
