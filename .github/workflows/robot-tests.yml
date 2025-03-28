@@ -20,4 +20,4 @@ jobs:
           sudo ln -s /usr/bin/chromedriver /usr/local/bin/chromedriver
 
       - name: Run Robot Tests
-        run: robot tests/RobotTests.robot
+        run: robot Test/RobotTests.robot
