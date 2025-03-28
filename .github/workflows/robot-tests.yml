@@ -1,23 +1,29 @@
-name: Robot Framework Tests
+name: Robot Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out repository code
+        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.9'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
+          pip install --upgrade pip
           pip install robotframework robotframework-seleniumlibrary
-          sudo apt-get install -y chromium-chromedriver
-          sudo ln -s /usr/bin/chromedriver /usr/local/bin/chromedriver
+          # or, if you have a requirements.txt:
+          # pip install -r requirements.txt
 
-      - name: Run Robot Tests
-        run: robot Test/RobotTests.robot
+      - name: Run Robot tests
+        run: robot Test/
